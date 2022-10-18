@@ -21,10 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
-                <div class="d-flex">
+                <form action = "" class = "d-flex">
                     <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search" value="${query!}">
                     <button class="btn btn-outline-light" type="submit">Search</button>
-                </div>
+                </form>
             </div>
         </div>
     </nav>
@@ -56,7 +56,10 @@
             </td>
             <td>${person.birthDate.format('LONG_DATE')}</td>
             <td>
-                <button type="submit" class="btn btn-secondary"><i class="bi bi-person-x-fill" role="img" aria-label="Delete"></i></button>
+                <form action="/delete" method="post">
+                    <input type="hidden" name="id" value="${person?index}">
+                    <button type="submit" class="btn btn-secondary"><i class="bi bi-person-x-fill" role="img" aria-label="Delete"></i></button>
+                </form>
             </td>
         </tr>
         [/#list]
@@ -64,7 +67,7 @@
     </table>
 
     <h2 class="mt-5 mb-3">Append new person</h2>
-    <div class="row g-3">
+    <form action="/" method="post" class="row g-3">
         <div class="col-md-3">
             <label for="given-name" class="form-label">Given name</label>
             <input id="given-name" name="givenName" class="form-control" type="text"/>
@@ -88,7 +91,7 @@
         <div class="col-md-1 align-self-end">
             <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus-fill" role="img" aria-label="Append"></i></button>
         </div>
-    </div>
+    </form>
 </div>
 </body>
 </html>
